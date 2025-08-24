@@ -1,0 +1,47 @@
+
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Galerie — Salmanazar</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  
+    <div class="nav">
+      <div class="brand"><div class="logo">S</div><span>Salmanazar</span></div>
+      <div class="menu">
+        <a id="nav-accueil" href="index.html">Accueil</a>
+        <a id="nav-degustations" href="degustations.html">Dégustations</a>
+        <a id="nav-galerie" href="galerie.html">Galerie</a>
+        <a id="nav-apropos" href="apropos.html">À propos</a>
+        <a id="nav-agenda" href="agenda.html">Agenda</a>
+        <a id="nav-contact" href="contact.html">Contact</a>
+      </div>
+    </div>
+    <script>markActive('nav-galerie');</script>
+    
+  <section class="container">
+    <h1>Galerie photos</h1>
+    <p class="small">Ajoutez vos images dans le dossier <code>assets/</code> et éditez la liste dans <code>data/galerie.json</code>.</p>
+    <div class="gallery" id="gallery"></div>
+  </section>
+  <footer class="footer container"></footer>
+  <script>
+    async function renderGallery(){
+      const res = await fetch('data/galerie.json');
+      const data = await res.json();
+      const g = document.getElementById('gallery');
+      data.images.forEach(src => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = 'Photo dégustation';
+        g.appendChild(img);
+      });
+    }
+    renderGallery();
+  </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agenda — Salmanazar</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <div class="nav">
+    <div class="brand"><div class="logo">S</div><span>Salmanazar</span></div>
+    <div class="menu">
+      <a id="nav-accueil" href="index.html">Accueil</a>
+      <a id="nav-degustations" href="degustations.html">Dégustations</a>
+      <a id="nav-galerie" href="galerie.html">Galerie</a>
+      <a id="nav-apropos" href="apropos.html">À propos</a>
+      <a id="nav-agenda" class="active" href="agenda.html">Agenda</a>
+      <a id="nav-contact" href="contact.html">Contact</a>
+    </div>
+  </div>
+  <section class="container">
+    <h1>Agenda</h1>
+    <p class="small">Les prochains rendez-vous de Salmanazar. Modifiez <code>data/agenda.json</code> pour tenir à jour.</p>
+    <div id="agenda"></div>
+  </section>
+  <footer class="footer container">Les dates peuvent évoluer selon météo, vignerons et niveau de gourmandise.</footer>
+  <script>
+    async function renderAgenda(){
+      const res = await fetch('data/agenda.json');
+      const data = await res.json();
+      const upcoming = data.events
+        .map(e=> ({...e, d:new Date(e.date)}))
+        .sort((a,b)=> a.d - b.d);
+      const wrap = document.getElementById('agenda');
+      const table = document.createElement('table');
+      const thead = document.createElement('thead');
+      thead.innerHTML = '<tr><th>Date</th><th>Événement</th><th>Lieu</th><th>Détails</th></tr>';
+      const tbody = document.createElement('tbody');
+      upcoming.forEach(e=>{
+        const tr = document.createElement('tr');
+        const date = e.d.toLocaleDateString();
+        tr.innerHTML = `<td>${date}</td><td>${e.title}</td><td>${e.location||''}</td><td>${e.details||''}</td>`;
+        tbody.appendChild(tr);
+      });
+      table.appendChild(thead); table.appendChild(tbody);
+      wrap.appendChild(table);
+    }
+    markActive('nav-agenda');
+    renderAgenda();
+  </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — Salmanazar</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  
+    <div class="nav">
+      <div class="brand"><div class="logo">S</div><span>Salmanazar</span></div>
+      <div class="menu">
+        <a id="nav-accueil" href="index.html">Accueil</a>
+        <a id="nav-degustations" href="degustations.html">Dégustations</a>
+        <a id="nav-galerie" href="galerie.html">Galerie</a>
+        <a id="nav-apropos" href="apropos.html">À propos</a>
+        <a id="nav-agenda" href="agenda.html">Agenda</a>
+        <a id="nav-contact" href="contact.html">Contact</a>
+      </div>
+    </div>
+    <script>markActive('nav-contact');</script>
+    
+  <section class="container">
+    <h1>Contact</h1>
+    <p>Envoyez-nous un message pour rejoindre une dégustation ou proposer un thème.</p>
+    <form class="card p" name="contact" netlify method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="contact">
+      <div style="display:grid;gap:12px;grid-template-columns:1fr 1fr">
+        <label>Prénom<br><input name="prenom" required style="width:100%;padding:10px;border:1px solid #e2d7cd;border-radius:8px;"></label>
+        <label>Nom<br><input name="nom" required style="width:100%;padding:10px;border:1px solid #e2d7cd;border-radius:8px;"></label>
+      </div>
+      <label>Email<br><input type="email" name="email" required style="width:100%;padding:10px;border:1px solid #e2d7cd;border-radius:8px;"></label>
+      <label>Message<br><textarea name="message" rows="5" style="width:100%;padding:10px;border:1px solid #e2d7cd;border-radius:8px;"></textarea></label>
+      <div style="margin-top:10px">
+        <button class="button primary" type="submit">Envoyer</button>
+      </div>
+    </form>
+    <p class="small">Astuce : ce formulaire peut être géré automatiquement si vous déployez sur Netlify (gratuit) ou relié à un email via un service tiers.</p>
+  </section>
+  <footer class="footer container"></footer>
+</body>
+</html>

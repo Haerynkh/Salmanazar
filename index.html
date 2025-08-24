@@ -1,0 +1,45 @@
+
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Salmanazar — Accueil</title>
+  <meta name="description" content="Association d'œnologie : dégustations, rencontres, partage autour du vin.">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  
+    <div class="nav">
+      <div class="brand"><div class="logo">S</div><span>Salmanazar</span></div>
+      <div class="menu">
+        <a id="nav-accueil" href="index.html">Accueil</a>
+        <a id="nav-degustations" href="degustations.html">Dégustations</a>
+        <a id="nav-galerie" href="galerie.html">Galerie</a>
+        <a id="nav-apropos" href="apropos.html">À propos</a>
+        <a id="nav-agenda" href="agenda.html">Agenda</a>
+        <a id="nav-contact" href="contact.html">Contact</a>
+      </div>
+    </div>
+    <script>markActive('nav-accueil');</script>
+    
+  <section class="hero container">
+    <h1>Salmanazar : levons le verre, pas les sourcils.</h1>
+    <p>Bienvenue dans notre club d'œnologie : dégustations mensuelles, ateliers thématiques, visites de domaines et joyeux débats sur l'éternelle question « carafé ou pas ? ».</p>
+    <div class="cta">
+      <a class="button primary" href="degustations.html">Voir les dernières dégustations</a>
+      <a class="button" href="galerie.html">Parcourir la galerie</a>
+      <a class="button" href="agenda.html">Voir l’agenda</a>
+    </div>
+  </section>
+  <section class="container">
+    <h2>Dernières dégustations</h2>
+    <div id="latest"></div>
+    <script>renderLatest('latest');</script>
+  </section>
+  <footer class="footer container">
+    © 2025 Salmanazar — Site statique gratuit. Mettez à jour le contenu dans <code>data/degustations.json</code> et le dossier <code>assets/</code>.
+  </footer>
+</body>
+</html>
